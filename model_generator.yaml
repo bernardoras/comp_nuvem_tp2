@@ -1,0 +1,32 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: playlists-train-bernardoras-ds1 # use dataset version in name
+  namespace: bernardosilva
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: playlists-train
+        image: docker.io/bernardoras/playlists-recommender-system-model-generator:0.1
+        env:
+        - name: "DATA_ROOT"
+          value: "/project2"
+        - name: DATASET_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: playlists-config
+              key: DATASET_VERSION
+        - name: DATASET_URL
+          valueFrom:
+            configMapKeyRef:
+              name: playlists-config
+              key: DATASET_URL
+        volumeMounts:
+        - mountPath: /project2
+          name: project2-pv2-bernardosilva-volume
+      volumes:
+      - name: project2-pv2-bernardosilva-volume
+        persistentVolumeClaim:
+          claimName: project2-pv2-bernardosilva
