@@ -7,6 +7,13 @@ spec:
   template:
     spec:
       restartPolicy: Never
+      initContainers:
+      - name: give-permission-for-pv
+        image: busybox:1.36
+        command: ["sh", "-c", "chmod -R 777 /project2"]
+        volumeMounts:
+        - name: project2-pv2-bernardosilva-volume
+          mountPath: /project2
       containers:
       - name: playlists-train
         image: docker.io/bernardoras/playlists-recommender-system-model-generator:0.1
