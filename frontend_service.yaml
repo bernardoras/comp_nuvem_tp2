@@ -3,6 +3,7 @@ kind: Service
 metadata:
   name: bernardoras-playlists-recommender-system-service
 spec:
+  type: NodePort
   selector:
     app: bernardoras-playlists-recommender-system
   ports:
