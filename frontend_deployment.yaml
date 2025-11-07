@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bernardoras-playlists-recommender-system-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bernardoras-playlists-recommender-system
+  template:
+    metadata:
+      labels:
+        app: bernardoras-playlists-recommender-system
+    spec:
+      containers:
+      - name: bernardoras-playlists-recommender-system-frontend
+        image: docker.io/bernardoras/playlists-recommender-system-frontend:0.1
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CODE_VERSION
+          value: "0.1"
+        - name: MODEL_PATH
+          value: /project2/model/model.pkl
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "8000"
+        volumeMounts:
+        - mountPath: /project2
+          name: project2-pv2-bernardosilva-volume
+      volumes:
+        - name: project2-pv2-bernardosilva-volume
+          persistentVolumeClaim:
+            claimName: project2-pv2-bernardosilva
