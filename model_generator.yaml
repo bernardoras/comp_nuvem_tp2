@@ -17,6 +17,7 @@ spec:
       containers:
       - name: playlists-train
         image: docker.io/bernardoras/playlists-recommender-system-model-generator:0.1
+        imagePullPolicy: Always
         env:
         - name: "DATA_ROOT"
           value: "/project2"
