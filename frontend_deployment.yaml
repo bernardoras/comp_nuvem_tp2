@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: bernardoras-playlists-recommender-system-deployment
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       app: bernardoras-playlists-recommender-system
