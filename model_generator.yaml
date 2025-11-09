@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: playlists-train-bernardoras-ds1 # use dataset version in name
+  name: playlists-train-bernardoras-ds1-v2 # use dataset version in name
   namespace: bernardosilva
 spec:
   template:
@@ -16,7 +16,7 @@ spec:
           mountPath: /project2
       containers:
       - name: playlists-train
-        image: docker.io/bernardoras/playlists-recommender-system-model-generator:0.1
+        image: docker.io/bernardoras/playlists-recommender-system-model-generator:0.2
         imagePullPolicy: Always
         env:
         - name: "DATA_ROOT"
