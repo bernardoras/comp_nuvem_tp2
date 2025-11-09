@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
       - name: bernardoras-playlists-recommender-system-frontend
-        image: docker.io/bernardoras/playlists-recommender-system-frontend:0.2
+        image: docker.io/bernardoras/playlists-recommender-system-frontend:0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
         env:
         - name: CODE_VERSION
-          value: "0.2"
+          value: "0.1"
         - name: MODEL_PATH
           value: /project2/model/model.pkl
         - name: HOST
