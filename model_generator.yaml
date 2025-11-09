@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: playlists-train-bernardoras-ds2 # use dataset version in name
+  name: playlists-train-bernardoras-ds1 # use dataset version in name
   namespace: bernardosilva
 spec:
   template:
